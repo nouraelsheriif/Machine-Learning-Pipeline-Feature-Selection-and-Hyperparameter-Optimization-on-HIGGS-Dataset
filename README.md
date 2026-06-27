@@ -1,4 +1,3 @@
-# Machine-Learning-Pipeline-Feature-Selection-and-Hyperparameter-Optimization-on-HIGGS-Dataset
 Machine Learning Pipeline: Feature Selection and Hyperparameter Optimization on HIGGS Dataset
 
 https://img.shields.io/badge/Python-3.12-blue.svg
@@ -6,32 +5,48 @@ https://img.shields.io/badge/License-MIT-green.svg
 https://img.shields.io/badge/Scikit--learn-1.6.1-orange.svg
 https://img.shields.io/badge/XGBoost-3.3.0-red.svg
 
- Project Overview
+📋 Table of Contents
+
+Project Overview
+Dataset Information
+Best Results
+Installation
+Project Structure
+Usage
+Visualization Outputs
+Hyperparameter Grids
+Model Performance Comparison
+Key Findings
+Requirements
+Academic Context
+License
+References
+Contact
+📋 Project Overview
 
 This project implements a comprehensive machine learning pipeline for binary classification on the HIGGS Dataset from the UCI Machine Learning Repository. The dataset contains simulated particle collision events used to distinguish between Higgs boson signal events and background events.
 
-Key Objectives
+🎯 Key Objectives
 
- Outlier analysis using Interquartile Range (IQR) method
- Feature scaling using MinMaxScaler [0,1]
- Filter-based feature selection using ANOVA F-score
- Nested cross-validation (5-fold outer, 3-fold inner)
- Hyperparameter optimization with GridSearchCV
- Comparison of four machine learning algorithms:
-K-Nearest Neighbors (KNN)
-Support Vector Machine (SVM)
-Multi-Layer Perceptron (MLP)
-XGBoost
- Model evaluation using multiple performance metrics
- ROC curves with One-vs-All (OVA) approach
- Dataset Information
+#	Objective
+1	Outlier analysis using Interquartile Range (IQR) method
+2	Feature scaling using MinMaxScaler [0,1]
+3	Filter-based feature selection using ANOVA F-score
+4	Nested cross-validation (5-fold outer, 3-fold inner)
+5	Hyperparameter optimization with GridSearchCV
+6	Comparison of four machine learning algorithms: KNN, SVM, MLP, XGBoost
+7	Model evaluation using multiple performance metrics
+8	ROC curves with One-vs-All (OVA) approach
+📊 Dataset Information
 
 Property	Value
 Dataset	HIGGS Dataset
-Samples Used	100,000 (from 11 million)
+Total Samples	11,000,000
+Samples Used	100,000 (random sample)
 Features	28 numerical features
-Target	Binary (0 = background, 1 = signal)
+Target Variable	Binary (0 = background, 1 = signal)
 Class Distribution	47.17% Class 0, 52.83% Class 1
+Data Type	High-dimensional particle physics data
 Source	UCI Machine Learning Repository
 🏆 Best Results
 
@@ -43,7 +58,7 @@ Precision	0.7288 ± 0.0034
 Recall	0.7266 ± 0.0048
 F1-Score	0.7277 ± 0.0028
 ROC-AUC	0.7883 ± 0.0042
-Selected Features (Top 15)
+Selected Features (Top 15 by ANOVA F-Score)
 
 Rank	Feature	ANOVA F-Score
 1	feature_25	1503.5703
@@ -67,6 +82,7 @@ Prerequisites
 
 Python 3.12 or higher
 Git
+10GB free storage (for dataset)
 Step 1: Clone the Repository
 
 bash
@@ -85,29 +101,28 @@ Step 3: Download the Dataset
 Download the HIGGS dataset from UCI Repository
 Place the file as HIGGS.csv in the project directory
 Note: The dataset is large (8GB). The code automatically loads only 100,000 samples.
-
- Project Structure
+📁 Project Structure
 
 text
 higgs-ml-pipeline/
 │
-├── final_project.py          # Main implementation with nested CV
-├── quick_plots.py             # Fast plotting script (no retraining)
-├── extract_dataset.py         # Extract HIGGS.csv.gz file
+├── final_project.py              # Main implementation with nested CV
+├── quick_plots.py                # Fast plotting script (no retraining)
+├── extract_dataset.py            # Extract HIGGS.csv.gz file
 │
-├── HIGGS.csv                  # Dataset (not included in repo)
+├── HIGGS.csv                     # Dataset (not included in repo)
 │
 ├── outputs/
-│   ├── feature_importance.png # Feature importance visualization
-│   ├── roc_curves.png         # ROC curves for all models
-│   ├── roc_curves_ova.png     # ROC curves (OVA approach)
-│   ├── confusion_matrices.png # Confusion matrices
-│   └── model_comparison.png   # Model comparison bar chart
+│   ├── feature_importance.png    # Feature importance visualization
+│   ├── roc_curves.png            # ROC curves for all models
+│   ├── roc_curves_ova.png        # ROC curves (OVA approach)
+│   ├── confusion_matrices.png    # Confusion matrices
+│   └── model_comparison.png      # Model comparison bar chart
 │
-├── requirements.txt           # Python dependencies
-├── README.md                  # This file
-└── LICENSE                    # MIT License
- Usage
+├── requirements.txt              # Python dependencies
+├── README.md                     # This file
+└── LICENSE                       # MIT License
+🛠️ Usage
 
 Option 1: Full Pipeline (with Nested CV)
 
@@ -119,14 +134,14 @@ Expected Runtime: ~14-15 minutes (depending on hardware)
 
 What it does:
 
-Loads and preprocesses the HIGGS dataset
-Performs outlier analysis (IQR method)
-Scales features using MinMaxScaler
-Selects top 15 features using ANOVA F-score
-Runs nested cross-validation (5-fold outer, 3-fold inner)
-Performs hyperparameter tuning with GridSearchCV
-Trains and evaluates KNN, SVM, MLP, and XGBoost
-Generates all visualization plots
+✅ Loads and preprocesses the HIGGS dataset
+✅ Performs outlier analysis (IQR method)
+✅ Scales features using MinMaxScaler
+✅ Selects top 15 features using ANOVA F-score
+✅ Runs nested cross-validation (5-fold outer, 3-fold inner)
+✅ Performs hyperparameter tuning with GridSearchCV
+✅ Trains and evaluates KNN, SVM, MLP, and XGBoost
+✅ Generates all visualization plots
 Option 2: Quick Plots Only
 
 Generate visualizations without retraining the full pipeline:
@@ -137,10 +152,10 @@ Expected Runtime: ~1-2 minutes
 
 What it does:
 
-Loads preprocessed data
-Trains only final models (no nested CV)
-Generates all visualization plots
- Visualization Outputs
+✅ Loads preprocessed data
+✅ Trains only final models (no nested CV)
+✅ Generates all visualization plots
+📊 Visualization Outputs
 
 File	Description
 feature_importance.png	Bar chart of ANOVA F-scores for all features
@@ -148,21 +163,21 @@ roc_curves.png	ROC curves comparing all four models
 roc_curves_ova.png	ROC curves using One-vs-All approach
 confusion_matrices.png	Confusion matrices for each model
 model_comparison.png	Bar chart comparing all performance metrics
- Hyperparameter Grids
+🔧 Hyperparameter Grids
 
 Model	Hyperparameters
 KNN	n_neighbors: [3, 5, 7, 9, 11]
 SVM	C: [0.1, 1.0, 10.0], kernel: ['linear', 'rbf']
 MLP	hidden_layer_sizes: [(50,), (100,)], activation: ['relu', 'tanh']
 XGBoost	n_estimators: [50, 100], max_depth: [3, 5], learning_rate: [0.01, 0.1]
- Model Performance Comparison
+📈 Model Performance Comparison
 
 Model	Accuracy	Precision	Recall	F1-Score	ROC-AUC	Time/Fold
-KNN	0.6630±0.0065	0.6655±0.0048	0.7280±0.0088	0.6954±0.0066	0.7179±0.0064	~19s
-SVM	0.5038±0.0095	0.5765±0.0190	0.2275±0.0234	0.3258±0.0269	0.5545±0.0139	~85s
-MLP	0.7100±0.0034	0.7227±0.0116	0.7332±0.0299	0.7273±0.0100	0.7857±0.0035	~65s
-XGBoost	0.7127±0.0028	0.7288±0.0034	0.7266±0.0048	0.7277±0.0028	0.7883±0.0042	~2s
- Key Findings
+KNN	0.6630 ± 0.0065	0.6655 ± 0.0048	0.7280 ± 0.0088	0.6954 ± 0.0066	0.7179 ± 0.0064	~19s
+SVM	0.5038 ± 0.0095	0.5765 ± 0.0190	0.2275 ± 0.0234	0.3258 ± 0.0269	0.5545 ± 0.0139	~85s
+MLP	0.7100 ± 0.0034	0.7227 ± 0.0116	0.7332 ± 0.0299	0.7273 ± 0.0100	0.7857 ± 0.0035	~65s
+XGBoost	0.7127 ± 0.0028	0.7288 ± 0.0034	0.7266 ± 0.0048	0.7277 ± 0.0028	0.7883 ± 0.0042	~2s
+🔬 Key Findings
 
 1. Best Performing Model
 
@@ -179,21 +194,4 @@ A significant 47.20% of samples contained outliers, which were clipped using the
 4. Nested Cross-Validation
 
 The 5-fold outer × 3-fold inner CV provided unbiased performance estimates while effectively tuning hyperparameters.
-
-Requirements
-
-Python Dependencies
-
-text
-numpy>=1.24.0
-pandas>=2.0.0
-matplotlib>=3.7.0
-seaborn>=0.12.0
-scikit-learn>=1.3.0
-xgboost>=2.0.0
-Hardware Requirements
-
-
-
-
 
