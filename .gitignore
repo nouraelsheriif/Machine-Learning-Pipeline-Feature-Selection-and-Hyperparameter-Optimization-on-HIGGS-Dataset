@@ -1,0 +1,5 @@
+echo "HIGGS.csv" > .gitignore
+echo "HIGGS.csv.gz" >> .gitignore
+echo "__pycache__/" >> .gitignore
+echo "*.pyc" >> .gitignore
+echo ".DS_Store" >> .gitignore
